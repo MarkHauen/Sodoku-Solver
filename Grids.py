@@ -1,3 +1,5 @@
+import createAllPossibles as allPoss
+
 def checkifValid(contents):
     if contents.__contains__(1) & contents.__contains__(2) & contents.__contains__(3) & contents.__contains__(4) & contents.__contains__(5) & contents.__contains__(6) & contents.__contains__(7) & contents.__contains__(8) & contents.__contains__(9):
         return True
@@ -10,10 +12,24 @@ def findImmutableIndexs(contents):
             immutableIndexes.append((contents[index], index))
     return immutableIndexes
 
+def findGridPossibles(gameGrid):
+    print("Finding Grid possibles for ", gameGrid.position)
+    possiblesList = []
+    goal = len(gameGrid.immutableIndexs)
+    for possibles in allPoss.allValids:
+        possibleGrid = Grid(possibles)
+        counter = 0
+        for immutableIndex in gameGrid.immutableIndexs:
+            if immutableIndex[0] == possibleGrid.contents[immutableIndex[1]]:
+                counter += 1
+        if counter == goal:
+            possiblesList.append(possibleGrid)
+    return possiblesList
 
 
 class Grid:
-    def __init__(self, textIput):
+    def __init__(self, textIput, position):
+        self.position = position
         self.TL = int(textIput[0])
         self.TM = int(textIput[1])
         self.TR = int(textIput[2])
@@ -32,6 +48,7 @@ class Grid:
         self.contents = [self.TL, self.TM, self.TR, self.ML, self.MM, self.MR, self.BL, self.BM, self.BR]
         self.isValid = checkifValid(self.contents)
         self.immutableIndexs = findImmutableIndexs(self.contents)
+        self.validGrids = findGridPossibles(self)
 
 
 def checkifAllVaild(contents):
@@ -41,6 +58,14 @@ def checkifAllVaild(contents):
             allValid = False
     return allValid
 
+#THIS NEEDS FILLING
+def findHorizontalPossibles(gameGrid):
+    print("Finding Horizontal possibles for ", gameGrid.positions)
+    possiblesList = []
+    goal = len(gameGrid.immutableIndexs)
+    for possibles in allValids:
+
+    return possiblesList
 
 class BigGrid:
     def __init__(self, TL, TM, TR, ML, MM, MR, BL, BM, BR):
@@ -52,3 +77,5 @@ class BigGrid:
         self.rightV = Grid(str(TR.TR) + str(TR.MR) + str(TR.BR) + str(MR.TR) + str(MR.MR) + str(MR.BR) + str(BR.TR) + str(BR.MR) + str(BR.BR))
         self.contents = [self.topH, self.midH, self.botH, self.leftV, self.midV, self.rightV]
         self.allGridsValid = checkifAllVaild(self.contents)
+
+
