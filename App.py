@@ -1,9 +1,9 @@
 import Grids as Grids
 
-with open("/Users/markhauenstein/PycharmProjects/SudokuSolver/input.txt", mode='rt') as input:
+with open("/*******PATH*******/SudokuSolver/input.txt", mode='rt') as input:
     inputArr = input.readlines()
 
-with open("/Users/markhauenstein/PycharmProjects/SudokuSolver/allPossibles.txt", mode='rt') as allPossibles:
+with open("/*******PATH*******/SudokuSolver/allPossibles.txt", mode='rt') as allPossibles:
     allValids = allPossibles.readlines()
 
 TL = Grids.Grid(inputArr[0])

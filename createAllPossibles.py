@@ -1,7 +1,7 @@
 import Grids as Grids
 
 def allPossibleGrids():
-    allPossiblestxt = open("/Users/markhauenstein/PycharmProjects/SudokuSolver/allPossibles.txt", mode='w')
+    allPossiblestxt = open("/*******PATH*******/SudokuSolver/allPossibles.txt", mode='w')
     validGrids = []
     i = 0
     for TL in range(1, 10):
